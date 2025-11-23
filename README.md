@@ -37,7 +37,7 @@ This structure allows for:
 ## **Repository Structure**
 
 ```
-hpc-codes-stack/
+Scientific-Codes-Management/
 ├── README.md
 ├── modules/
 │   ├── README.md
