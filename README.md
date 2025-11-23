@@ -38,24 +38,69 @@ This structure allows for:
 
 ```
 Scientific-Codes-Management/
-├── README.md
-├── modules/
-│   ├── README.md
-│   └── development-env/
-├── codes/
-│   ├── quantum-espresso/
-│   │   ├── README.md
-│   │   ├── VERSION-7.5.md
-│   │   └── modulefiles/
-│   ├── vasp/
-│   │   ├── README.md
-│   │   ├── VERSION-6.3.md
-│   │   └── modulefiles/
-│   ├── lammps/
-│   │   ├── README.md
-│   │   ├── VERSION-12Dec2023.md
-│   │   └── modulefiles/
-│   └── <other-codes>/
+├── aflow
+│   ├── aflow-3.2.13
+│   │   └── bin
+│   └── aflow-4.0.5
+│       └── bin
+├── gulp
+│   └── gulp-6.3.4
+│       └── bin
+├── matlab-runtime
+│   └── v91
+│       ├── appdata
+│       ├── bin
+│       ├── cefclient
+│       ├── etc
+│       ├── extern
+│       ├── help
+│       ├── java
+│       ├── license_agreement.txt
+│       ├── mcr
+│       ├── MCR_license.txt
+│       ├── patents.txt
+│       ├── polyspace
+│       ├── remote
+│       ├── resources
+│       ├── rtw
+│       ├── runtime
+│       ├── settings
+│       ├── sys
+│       ├── toolbox
+│       ├── trademarks.txt
+│       └── ui
+├── modules
+│   ├── aflow
+│   │   ├── 3.2.13
+│   │   ├── 4.0.5
+│   │   └── latest -> 4.0.5
+│   ├── gulp
+│   │   ├── 6.3.4
+│   │   └── latest -> 6.3.4
+│   ├── intel-devel
+│   │   └── intel-devel
+│   ├── nwchem
+│   │   ├── nwchem_mpich
+│   │   └── nwchem_openmpi
+│   ├── quantum-espresso
+│   │   ├── 7.5
+│   │   └── latest -> 7.5
+│   └── uspex
+│       ├── 10.5
+│       └── 25
+├── nwchem
+├── quantum-espresso
+│   └── qe-7.5
+│       └── bin
+├── siesta
+├── spglib
+├── USPEX
+|   ├── USPEX-10.5
+│   ├── appdata
+│   ├── application
+│   ├── uninstall
+|   └── USPEX-25
+|       └── bin
 ├── install-scripts/
 │   ├── install-qe.sh
 │   ├── install-vasp.sh
