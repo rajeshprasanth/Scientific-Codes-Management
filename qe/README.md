@@ -21,13 +21,13 @@ This directory contains the installation, documentation, and modulefiles for QE 
 ```
 
 ..
-qe
-├── qe-7.5
-│   └── bin                # Directory for storing quantum espresso executable files
-└── qe_modulesfiles
-    └── quantum-espresso
-        ├── 7.5            # Stable version v7.5
-        └── latest -> 7.5  # Symlink for latest version
+quantum-espresso/
+└── qe-7.5
+    └── bin
+modules/quantum-espresso/
+├── 7.5
+└── latest -> 7.5
+
 ````
 
 ---

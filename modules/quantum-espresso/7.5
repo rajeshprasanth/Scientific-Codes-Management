@@ -1,0 +1,23 @@
+#%Module1.0
+##
+## Quantum ESPRESSO 7.5
+##
+
+proc ModulesHelp { } {
+    puts stderr "Quantum ESPRESSO 7.5"
+}
+
+module-whatis "Quantum ESPRESSO 7.5"
+
+# Dependency stack
+module load tbb/latest
+module load compiler-rt/latest
+module load umf/latest
+module load compiler/latest
+module load mkl/latest
+module load mpi/latest
+
+# Export paths
+set root /opt/codes/quantum-espresso/qe-7.5
+prepend-path PATH            $root/bin
+setenv QE_ROOT               $root

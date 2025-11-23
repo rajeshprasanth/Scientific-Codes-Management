@@ -3,30 +3,30 @@
 set -euo pipefail
 
 # ============================================================
-#  Quantum ESPRESSO Deployment Script (Interactive)
+#  AFLOW Deployment Script (Interactive)
 #  Root Required • Modulefile Generator • Default Paths
 # ============================================================
 
-DEFAULT_BASE="/opt/codes/quantum-espresso"
-DEFAULT_MODROOT="/opt/codes/modules/quantum-espresso"
+DEFAULT_BASE="/opt/codes/aflow"
+DEFAULT_MODROOT="/opt/codes/modules/aflow"
 
 # ---------------------- HELP MESSAGE ------------------------
 show_help() {
     cat <<EOF
-Quantum ESPRESSO Deployment Script
+AFLOW Deployment Script
 ----------------------------------
 
 Usage:
-  sudo ./install-qe.sh
+  sudo ./install-aflow.sh
 
 This script will ask for:
-  - QE Version
+  - Build Version
   - Build directory (must contain bin/)
-  - Deploy target directory (default: /opt/codes/quantum-espresso/qe-<VERSION>)
+  - Deploy target directory (default: ${DEFAULT_BASE}/aflow-<VERSION>)
   - Modulefile path        (default: ${DEFAULT_MODROOT}/<VERSION>)
 
 It will:
-  - Copy QE binaries to the target directory
+  - Copy AFLOW binaries to the target directory
   - Create a modulefile
   - Update 'latest' symlink
 
@@ -47,22 +47,22 @@ fi
 
 echo "[OK] Running with root privileges."
 echo "============================================================"
-echo " Quantum ESPRESSO Deployment (Interactive)"
+echo " AFLOW Deployment (Interactive)"
 echo "============================================================"
 
 # ---------------------- GET VERSION -------------------------
-read -rp "Enter QE version (example: 7.5): " VERSION
+read -rp "Enter AFLOW version (example: 7.5): " VERSION
 [[ -z "$VERSION" ]] && { echo "[ERROR] Version cannot be empty"; exit 1; }
 
 # ---------------------- GET BUILD DIRECTORY -----------------
-read -rp "Enter full path to QE build directory: " BUILD_DIR
-[[ ! -d "$BUILD_DIR/bin" ]] && {
-    echo "[ERROR] ${BUILD_DIR}/bin does not exist. QE build seems incomplete."
+read -rp "Enter full path to AFLOW build directory: " BUILD_DIR
+[[ ! -d "$BUILD_DIR" ]] && {
+    echo "[ERROR] ${BUILD_DIR} does not exist. AFLOW build seems incomplete."
     exit 1
 }
 
 # ---------------------- TARGET DIRECTORY (DEFAULT) ----------
-DEFAULT_TARGET="${DEFAULT_BASE}/qe-${VERSION}"
+DEFAULT_TARGET="${DEFAULT_BASE}/aflow-${VERSION}"
 read -rp "Enter deploy target directory [${DEFAULT_TARGET}]: " TARGET_DIR
 TARGET_DIR="${TARGET_DIR:-$DEFAULT_TARGET}"
 TARGET_BIN="${TARGET_DIR}/bin"
@@ -79,7 +79,7 @@ LATEST_LINK="${MODULE_DIR}/latest"
 echo
 echo "Deployment Summary:"
 echo "------------------------------------------------------------"
-echo "  QE Version            : ${VERSION}"
+echo "  AFLOW Version            : ${VERSION}"
 echo "  Build directory       : ${BUILD_DIR}"
 echo "  Deploy target         : ${TARGET_DIR}"
 echo "  Modulefile            : ${MODULEFILE}"
@@ -93,8 +93,8 @@ echo "[INFO] Creating target directory: ${TARGET_BIN}"
 mkdir -p "${TARGET_BIN}"
 mkdir -p "${MODULE_DIR}"
 
-echo "[INFO] Copying QE binaries to ${TARGET_BIN}"
-find ${BUILD_DIR} -name "*.x" -not -path "${BUILD_DIR}/bin/*" -exec cp {} ${TARGET_BIN} \;
+echo "[INFO] Copying AFLOW binaries to ${TARGET_BIN}"
+find ${BUILD_DIR} -name aflow -exec cp {} ${TARGET_BIN} \;
 
 # ---------------------- MODULEFILE --------------------------
 echo "[INFO] Writing modulefile: ${MODULEFILE}"
@@ -102,27 +102,19 @@ echo "[INFO] Writing modulefile: ${MODULEFILE}"
 cat > "${MODULEFILE}" <<EOF
 #%Module1.0
 ##
-## Quantum ESPRESSO ${VERSION}
+## AFLOW ${VERSION}
 ##
 
 proc ModulesHelp { } {
-    puts stderr "Quantum ESPRESSO ${VERSION}"
+    puts stderr "AFLOW ${VERSION}"
 }
 
-module-whatis "Quantum ESPRESSO ${VERSION}"
-
-# Dependency stack
-module load tbb/latest
-module load compiler-rt/latest
-module load umf/latest
-module load compiler/latest
-module load mkl/latest
-module load mpi/latest
+module-whatis "AFLOW ${VERSION}"
 
 # Export paths
 set root ${TARGET_DIR}
 prepend-path PATH            \$root/bin
-setenv QE_ROOT               \$root
+setenv AFLOW_ROOT               \$root
 EOF
 
 # ---------------------- LATEST SYMLINK ----------------------
@@ -132,10 +124,10 @@ ln -s "${VERSION}" "${LATEST_LINK}"
 
 # ---------------------- DONE -------------------------------
 echo "============================================================"
-echo "[SUCCESS] QE ${VERSION} deployed successfully!"
+echo "[SUCCESS] AFLOW ${VERSION} deployed successfully!"
 echo
 echo "To use it:"
 echo "  module use ${DEFAULT_MODROOT}"
-echo "  module load quantum-espresso/${VERSION}"
-echo "  module load quantum-espresso/latest"
+echo "  module load aflow/${VERSION}"
+echo "  module load aflow/latest"
 echo "============================================================"

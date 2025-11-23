@@ -1,0 +1,15 @@
+#%Module1.0
+##
+## AFLOW 3.2.13
+##
+
+proc ModulesHelp { } {
+    puts stderr "AFLOW 3.2.13"
+}
+
+module-whatis "AFLOW 3.2.13"
+
+# Export paths
+set root /opt/codes/aflow/aflow-3.2.13
+prepend-path PATH            $root/bin
+setenv AFLOW_ROOT               $root

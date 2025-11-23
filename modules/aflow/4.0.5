@@ -1,0 +1,15 @@
+#%Module1.0
+##
+## AFLOW 4.0.5
+##
+
+proc ModulesHelp { } {
+    puts stderr "AFLOW 4.0.5"
+}
+
+module-whatis "AFLOW 4.0.5"
+
+# Export paths
+set root /opt/codes/aflow/aflow-4.0.5
+prepend-path PATH            $root/bin
+setenv AFLOW_ROOT               $root

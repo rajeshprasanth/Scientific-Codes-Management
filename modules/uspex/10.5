@@ -1,0 +1,22 @@
+#%Module1.0
+##
+## USPEX Modulefile
+##
+
+proc ModulesHelp { } {
+    puts stderr "This module sets up environment for USPEX."
+}
+
+module-whatis "USPEX 10.5 environment"
+
+# Set root directories
+set mcrroot /opt/codes/matlab-runtime
+set uspexroot /opt/codes/USPEX/USPEX-10.5/application/archive
+
+# Environment variables
+setenv MCRROOT $mcrroot
+setenv USPEXPATH $uspexroot/src
+
+# Update PATH
+prepend-path PATH $uspexroot
+

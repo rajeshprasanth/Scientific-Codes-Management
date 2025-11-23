@@ -1,0 +1,15 @@
+#%Module1.0
+##
+## GULP 6.3.4
+##
+
+proc ModulesHelp { } {
+    puts stderr "GULP 6.3.4"
+}
+
+module-whatis "GULP 6.3.4"
+
+# Export paths
+set root /opt/codes/gulp/gulp-6.3.4
+prepend-path PATH            $root/bin
+setenv GULP_ROOT               $root

@@ -1,0 +1,17 @@
+#%Module1.0
+##
+## USPEX 25 Modulefile
+##
+
+proc ModulesHelp { } {
+    puts stderr "This module adds USPEX 25 executables to your PATH."
+}
+
+module-whatis "Adds USPEX 25 to PATH"
+
+# Define root directory
+set uspexbin /opt/codes/USPEX/USPEX-25/bin
+
+# Update PATH
+prepend-path PATH $uspexbin
+

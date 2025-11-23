@@ -1,0 +1,44 @@
+#%Module1.0
+##
+## development-env — Full Development Toolchain Environment
+##
+
+proc ModulesHelp { } {
+    puts stderr ""
+    puts stderr "development-env module loads the complete toolchain:"
+    puts stderr "  - compiler/latest"
+    puts stderr "  - compiler-rt/latest"
+    puts stderr "  - mkl/latest"
+    puts stderr "  - mpi/latest"
+    puts stderr "  - tbb/latest"
+    puts stderr "  - umf/latest"
+    puts stderr ""
+    puts stderr "Use:"
+    puts stderr "  module load development-env"
+    puts stderr ""
+}
+
+module-whatis "Development toolchain (Intel compiler, MPI, MKL, TBB, UMF, compiler-rt)"
+
+# --------------------------------------------------------------------
+# Load prerequisite modules
+# --------------------------------------------------------------------
+module load compiler/latest
+module load compiler-rt/latest
+module load mkl/latest
+module load mpi/latest
+module load tbb/latest
+module load umf/latest
+
+# --------------------------------------------------------------------
+# Optional environment variables
+# --------------------------------------------------------------------
+setenv DEV_ENV 1
+setenv DEV_ENV_ROOT "/opt/codes/modules"
+
+# Additional useful development paths (HOME/local)
+prepend-path PATH              $env(HOME)/bin
+prepend-path LD_LIBRARY_PATH   $env(HOME)/lib
+prepend-path PKG_CONFIG_PATH   $env(HOME)/lib/pkgconfig
+
+

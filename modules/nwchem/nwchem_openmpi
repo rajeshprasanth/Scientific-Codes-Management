@@ -1,0 +1,30 @@
+#%Module1.0
+##
+## NWChem OpenMPI Modulefile
+##
+
+proc ModulesHelp { } {
+    puts stderr "This module sets up NWChem built with OpenMPI."
+}
+
+module-whatis "NWChem OpenMPI environment"
+
+# Ensure no conflicting MPI is loaded
+if {[module-info mode load]} {
+    module unload mpi/mpich-x86_64
+}
+
+# Load required MPI module
+module load mpi/openmpi-x86_64
+
+# Set root directory
+set nwchemroot /opt/codes/nwchem/nwchem_openmpi
+
+# Set environment variables
+setenv NWCHEM_TOP $nwchemroot
+setenv NWCHEM_TARGET "Linux64-openmpi"
+
+# Update PATH and LD_LIBRARY_PATH
+prepend-path PATH $nwchemroot/bin
+prepend-path LD_LIBRARY_PATH $nwchemroot/lib
+
