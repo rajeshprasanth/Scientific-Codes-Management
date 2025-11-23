@@ -121,4 +121,3 @@ module load quantum-espresso/7.5
 # or
 module load quantum-espresso/latest
 ```
-```
