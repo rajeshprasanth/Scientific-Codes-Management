@@ -1,16 +1,5 @@
 # Scientific-Codes-Management
 Collection of HPC scientific applications (Quantum ESPRESSO, VASP, LAMMPS, etc.) with their build configurations, versioned documentation, modulefiles, and environment setups for cluster deployment.
-Absolutely! I can generate a **full, professional README** tailored for your repository layout, keeping in mind that you’ll maintain **one Markdown file per package**.
-
-Here’s a clean, GitHub-ready `README.md` template:
-
----
-
-# `hpc-codes-stack`
-
-> A unified HPC software stack containing multiple scientific codes, installation notes, version-specific documentation, and environment modulefiles for reproducible research workflows.
-
----
 
 ## **Table of Contents**
 
@@ -191,21 +180,11 @@ echo $QE_HOME  # /opt/codes/qe/qe-7.5
 
 ---
 
-## **License**
+## License
 
-This repository is [MIT Licensed](LICENSE) unless otherwise specified in the individual code directories.
+This repository is licensed under the **GNU General Public License v3.0 (GPLv3)**.  
+You are free to use, modify, and redistribute this repository under the terms of GPLv3.
 
----
-
-## **Next Steps / Recommendations**
-
-* Maintain **one Markdown file per package version** for clarity.
-* Keep modulefiles in sync with `/opt/codes` paths.
-* Use `install-scripts/` to automate reproducible builds.
-* Consider GitHub Actions or CI for validation if multiple contributors are involved.
+See [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.en.html) for full details.
 
 ---
-
-I can also generate a **ready-to-use repo structure with this README and sample QE package** with `VERSION-7.5.md` and modulefile template, so you can directly push to GitHub.
-
-Do you want me to generate that?
