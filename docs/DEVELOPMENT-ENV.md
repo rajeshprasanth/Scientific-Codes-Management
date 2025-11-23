@@ -1,6 +1,3 @@
-# ** `DEVELOPMENT-ENV.md`**
-
-````markdown
 # Development Environment — HPC Stack
 
 This document describes the **shared development environment** used to build and deploy HPC scientific codes.
